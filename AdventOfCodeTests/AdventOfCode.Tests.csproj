@@ -48,6 +48,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Day02Tests.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Day01Tests.cs" />
     <Compile Include="HelperTests.cs" />
@@ -78,6 +79,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\HelperIntArray.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\HelperStringArray.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\D02_P1.txt" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

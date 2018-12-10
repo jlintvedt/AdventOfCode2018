@@ -145,7 +145,16 @@
   <data name="D01_P1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>resources\D01_P1.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
   </data>
+  <data name="D02_E1" xml:space="preserve">
+    <value>abcdef,bababc,abbcde,abcccd,aabcdd,abcdee,ababab</value>
+  </data>
+  <data name="D02_P1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\D02_P1.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
   <data name="HelperIntArray" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>resources\HelperIntArray.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="HelperStringArray" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\HelperStringArray.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
 </root>

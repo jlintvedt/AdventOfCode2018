@@ -19,5 +19,11 @@ namespace AdventOfCodeTests
             }
             return intInput;
         }
+
+        public static string[] LoadResourceStringArray(string resourceName, string delim)
+        {
+            var rawInput = InputData.ResourceManager.GetObject(resourceName);
+            return rawInput.ToString().Split(new[] { delim }, StringSplitOptions.None);
+        }
     }
 }

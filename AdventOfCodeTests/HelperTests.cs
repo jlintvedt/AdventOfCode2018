@@ -14,5 +14,12 @@ namespace AdventOfCode.Tests
             var resource = Helper.LoadResourceIntArray("HelperIntArray", Environment.NewLine);
             CollectionAssert.AreEqual(new int[] { -3, -2, -1, 0, 1, 2, 3 }, resource);
         }
+
+        [TestMethod]
+        public void LoadResourceStringArrayTest()
+        {
+            var resource = Helper.LoadResourceStringArray("HelperStringArray", Environment.NewLine);
+            CollectionAssert.AreEqual(new string[] { "abcd", "efgh", "jkl" }, resource);
+        }
     }
 }

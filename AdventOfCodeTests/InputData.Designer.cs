@@ -253,6 +253,42 @@ namespace AdventOfCodeTests {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to abcdef,bababc,abbcde,abcccd,aabcdd,abcdee,ababab.
+        /// </summary>
+        internal static string D02_E1 {
+            get {
+                return ResourceManager.GetString("D02_E1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to uosnxmfkezbojfdgwvrtaqhluy
+        ///iosnxmfkazbcopdgnvrtaqhluy
+        ///ioanxmfkezbcjpdgwvrjaohluy
+        ///uosnxmfkezbcjpjgwvrtaqhlut
+        ///imsnxmfkezbcjpugwvataqhluy
+        ///ioenxmfkezbcjpdgwvrraqhluz
+        ///iosnxmfkezbcjpdgevitnqhluy
+        ///iosnxmfkezcccpdgcvrtaqhluy
+        ///loinxmfkezbcjpdgwvrtaqhluu
+        ///iosnlmfkezbczndgwvrtaqhluy
+        ///iosnxmfkezbcjpdgwvrifghluy
+        ///iosnuhfkezbcjpugwvrtaqhluy
+        ///iosnxmfkezbcwpdgwvrtaihlgy
+        ///iosnxzfwuzbcjpdgwvrtaqhluy
+        ///hosnxmfjizbcjpdgwvrtaqhluy
+        ///iornxmfktzbcjpdgwvrtaqhluo
+        ///nosnxmfkdzbcjpdgwvrtaqhlwy
+        ///iosnxmfkezbcjpdgwvrtaktluq
+        ///ioszxmlk [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string D02_P1 {
+            get {
+                return ResourceManager.GetString("D02_P1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to -3
         ///-2
         ///-1
@@ -264,6 +300,17 @@ namespace AdventOfCodeTests {
         internal static string HelperIntArray {
             get {
                 return ResourceManager.GetString("HelperIntArray", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to abcd
+        ///efgh
+        ///jkl.
+        /// </summary>
+        internal static string HelperStringArray {
+            get {
+                return ResourceManager.GetString("HelperStringArray", resourceCulture);
             }
         }
     }
