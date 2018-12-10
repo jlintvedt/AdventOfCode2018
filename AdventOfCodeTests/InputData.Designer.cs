@@ -262,6 +262,15 @@ namespace AdventOfCodeTests {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to abcde,fghij,klmno,pqrst,fguij,axcye,wvxyz.
+        /// </summary>
+        internal static string D02_E2 {
+            get {
+                return ResourceManager.GetString("D02_E2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to uosnxmfkezbojfdgwvrtaqhluy
         ///iosnxmfkazbcopdgnvrtaqhluy
         ///ioanxmfkezbcjpdgwvrjaohluy

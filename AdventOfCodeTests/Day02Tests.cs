@@ -14,6 +14,7 @@ namespace AdventOfCode.Tests
     [TestClass()]
     public class Day02Tests
     {
+        // == == == == == Puzzle 1 == == == == ==
         [TestMethod()]
         public void Puzzle1ExampleTest()
         {
@@ -43,6 +44,37 @@ namespace AdventOfCode.Tests
                 Assert.AreEqual(expectedDoubles[i], doubles);
                 Assert.AreEqual(expectedTriples[i], triples);
             }
+        }
+
+        // == == == == == Puzzle 2 == == == == ==
+        [TestMethod()]
+        public void Puzzle2ExampleTest()
+        {
+            var commonCharacters = Day02.Puzzle2(Helper.LoadResourceStringArray("D02_E2", ","));
+            Assert.AreEqual("fgij", commonCharacters);
+        }
+
+        [TestMethod()]
+        public void Puzzle2Test()
+        {
+            var commonCharacters = Day02.Puzzle2(Helper.LoadResourceStringArray("D02_P1", Environment.NewLine));
+            Assert.AreEqual("iosnxmfkpabcjpdywvrtahluy", commonCharacters);
+        }
+
+        [TestMethod()]
+        public void FindNumDifferentCharactersTest()
+        {
+            Assert.AreEqual(0, Day02.FindNumDifferentCharacters("abcdef", "abcdef"));
+            Assert.AreEqual(1, Day02.FindNumDifferentCharacters("abcdef", "Xbcdef"));
+            Assert.AreEqual(1, Day02.FindNumDifferentCharacters("abcdef", "abcdeX"));
+            Assert.AreEqual(2, Day02.FindNumDifferentCharacters("abcdef", "abcdXX"));
+        }
+
+        [TestMethod()]
+        public void FindCommonCharactersTest()
+        {
+            Assert.AreEqual("abcefg", Day02.FindCommonCharacters("abcdefg","abcXefg"));
+            Assert.AreEqual("cde", Day02.FindCommonCharacters("abcdefg", "XXcdeXX"));
         }
     }
 }
