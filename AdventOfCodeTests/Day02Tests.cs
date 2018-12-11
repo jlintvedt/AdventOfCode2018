@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using AdventOfCode;
 using AdventOfCodeTests;
 
 namespace AdventOfCode.Tests
@@ -19,7 +18,7 @@ namespace AdventOfCode.Tests
         [TestInitialize]
         public void TestInitialize()
         {
-            inputDay02 = Helper.LoadResourceStringArray("D02_P1", Environment.NewLine);
+            inputDay02 = Helper.LoadResourceStringArray("D02_Puzzle", Environment.NewLine);
         }
 
         // == == == == == Puzzle 1 == == == == ==

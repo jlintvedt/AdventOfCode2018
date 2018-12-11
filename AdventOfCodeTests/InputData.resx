@@ -142,8 +142,8 @@
     <value>+7, +7, -2, -7, -4</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="D01_P1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>resources\D01_P1.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  <data name="D01_Puzzle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\D01_Puzzle.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="D02_E1" xml:space="preserve">
     <value>abcdef,bababc,abbcde,abcccd,aabcdd,abcdee,ababab</value>
@@ -151,8 +151,14 @@
   <data name="D02_E2" xml:space="preserve">
     <value>abcde,fghij,klmno,pqrst,fguij,axcye,wvxyz</value>
   </data>
-  <data name="D02_P1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>resources\D02_P1.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  <data name="D02_Puzzle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\D02_Puzzle.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="D03_E1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\D03_E1.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="D03_Puzzle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\D03_Puzzle.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="HelperIntArray" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>resources\HelperIntArray.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>

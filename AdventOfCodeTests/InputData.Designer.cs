@@ -246,9 +246,9 @@ namespace AdventOfCodeTests {
         ///-12
         ///+16        /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string D01_P1 {
+        internal static string D01_Puzzle {
             get {
-                return ResourceManager.GetString("D01_P1", resourceCulture);
+                return ResourceManager.GetString("D01_Puzzle", resourceCulture);
             }
         }
         
@@ -291,9 +291,52 @@ namespace AdventOfCodeTests {
         ///iosnxmfkezbcjpdgwvrtaktluq
         ///ioszxmlk [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string D02_P1 {
+        internal static string D02_Puzzle {
             get {
-                return ResourceManager.GetString("D02_P1", resourceCulture);
+                return ResourceManager.GetString("D02_Puzzle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to #1 @ 1,3: 4x4
+        ///#2 @ 3,1: 4x4
+        ///#3 @ 5,5: 2x2.
+        /// </summary>
+        internal static string D03_E1 {
+            get {
+                return ResourceManager.GetString("D03_E1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to #1 @ 469,741: 22x26
+        ///#2 @ 290,985: 25x11
+        ///#3 @ 794,639: 21x28
+        ///#4 @ 969,266: 13x11
+        ///#5 @ 465,103: 24x10
+        ///#6 @ 537,925: 7x9
+        ///#7 @ 276,540: 17x25
+        ///#8 @ 386,614: 12x8
+        ///#9 @ 38,207: 12x21
+        ///#10 @ 836,338: 29x21
+        ///#11 @ 728,948: 19x23
+        ///#12 @ 555,514: 18x14
+        ///#13 @ 572,754: 29x12
+        ///#14 @ 181,225: 21x21
+        ///#15 @ 383,414: 21x14
+        ///#16 @ 22,726: 29x29
+        ///#17 @ 989,671: 11x17
+        ///#18 @ 750,176: 13x26
+        ///#19 @ 492,757: 29x11
+        ///#20 @ 330,179: 28x25
+        ///#21 @ 192,230: 15x24
+        ///#22 @ 495,968: 21x24
+        ///#23 @ 413,522: 13x16
+        ///#24 @ 888,886: 25x14 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string D03_Puzzle {
+            get {
+                return ResourceManager.GetString("D03_Puzzle", resourceCulture);
             }
         }
         

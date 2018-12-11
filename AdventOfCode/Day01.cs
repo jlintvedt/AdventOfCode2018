@@ -11,12 +11,14 @@ namespace AdventOfCode
     /// </summary>
     public static class Day01
     {
-        public static int CalculateFrequency(int[] frequencyChanges)
+        // == == == == == Puzzle 1 == == == == ==
+        public static int Puzzle1(int[] frequencyChanges)
         {
             return frequencyChanges.Sum();
         }
 
-        public static int FindReccuringFrequency(int[] frequencyChanges)
+        // == == == == == Puzzle 2 == == == == ==
+        public static int Puzzle2(int[] frequencyChanges)
         {
             int currentFrequency = 0;
             var previousFrequencies = new HashSet<int>();

@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Day02Tests.cs" />
+    <Compile Include="Day03Tests.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Day01Tests.cs" />
     <Compile Include="HelperTests.cs" />
@@ -71,11 +72,12 @@
   <ItemGroup>
     <EmbeddedResource Include="InputData.resx">
       <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
       <LastGenOutput>InputData.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\D01_P1.txt" />
+    <None Include="resources\D01_Puzzle.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\HelperIntArray.txt" />
@@ -84,7 +86,13 @@
     <None Include="resources\HelperStringArray.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\D02_P1.txt" />
+    <None Include="resources\D02_Puzzle.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\D03_E1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\D03_Puzzle.txt" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

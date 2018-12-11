@@ -8,6 +8,7 @@ namespace AdventOfCode
 {
     public class Day02
     {
+        // == == == == == Puzzle 1 == == == == ==
         public static int Puzzle1(string[] boxIDs)
         {
             int doubles = 0, triples = 0;
@@ -52,6 +53,7 @@ namespace AdventOfCode
             triples = triples >= 1 ? 1 : 0;
         }
 
+        // == == == == == Puzzle 2 == == == == ==
         public static string Puzzle2(string[] boxIDs)
         {
             for (int i = 0; i < boxIDs.Length; i++)
