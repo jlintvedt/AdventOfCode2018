@@ -20,6 +20,18 @@ namespace AdventOfCode.Tests
             inputDay03 = Helper.LoadResourceStringArray("D03_Puzzle", Environment.NewLine);
         }
 
+        // == == == == == Puzzle 1 == == == == ==
+        [TestMethod()]
+        public void ClaimInitializeTest()
+        {
+            var claim = new Day03.Claim("#13 @ 2,3:4x5");
+            Assert.AreEqual(13, claim.ID);
+            Assert.AreEqual(2, claim.x);
+            Assert.AreEqual(3, claim.y);
+            Assert.AreEqual(4, claim.width);
+            Assert.AreEqual(5, claim.height);
+        }
+
         [TestMethod()]
         public void Puzzle1ExampleTest()
         {
@@ -30,7 +42,10 @@ namespace AdventOfCode.Tests
         [TestMethod()]
         public void Puzzle1Test()
         {
-            Assert.Fail();
+            Assert.AreEqual(96569, Day03.Puzzle1(inputDay03));
         }
+
+
+        // == == == == == Puzzle 2 == == == == ==
     }
 }
