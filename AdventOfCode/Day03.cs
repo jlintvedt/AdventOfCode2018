@@ -51,25 +51,62 @@ namespace AdventOfCode
                 }
                 return overlaps;
             }
+
+            public int CheckNumberOfOverlaps(Claim claim)
+            {
+                var highestOverlap = 0;
+                for (int x = claim.x; x < claim.x + claim.width; x++)
+                {
+                    for (int y = claim.y; y < claim.y + claim.height; y++)
+                    {
+                        if (area[x, y]>highestOverlap)
+                        {
+                            highestOverlap = area[x, y];
+                        }
+                    }
+                }
+                return highestOverlap;
+            }
         }
 
-        
+        // == == == == == Puzzle 1 == == == == ==
         public static int Puzzle1(string[] rawInput)
         {
             var fabric = new Fabric(1000, 1000); // Don't like this. Makes assumptions about the input
             int overlaps = 0;
             foreach (var claimString in rawInput)
             {
-                var claim = new Claim(claimString);
-                overlaps += fabric.AddClaim(claim);
+                overlaps += fabric.AddClaim(new Claim(claimString));
             }
             return overlaps;
         }
 
         // == == == == == Puzzle 2 == == == == ==
-        public static int Puzzle2()
+        /// <summary>
+        /// Finds the claim that does not overlap with anyone elses
+        /// Another way to solve this one would be to store the parsed Claims objcts to avoid parsing twice
+        /// But this would consume more memory. It's a tradeoff either way
+        /// </summary>
+        /// <param name="rawInput"></param>
+        /// <returns>Returns the first claim that </returns>
+        public static int Puzzle2(string[] rawInput)
         {
-            return 0;
+            var fabric = new Fabric(1000, 1000); // Don't like this. Makes assumptions about the input
+            // First add all claims
+            foreach (var claimString in rawInput)
+            {
+                fabric.AddClaim(new Claim(claimString));
+            }
+            // Then check if a claim is alone in it's area
+            foreach (var claimString in rawInput)
+            {
+                var claim = new Claim(claimString);
+                // If there exists only 1 claim in the same area, it only overlaps with itself
+                if(fabric.CheckNumberOfOverlaps(new Claim(claimString)) == 1){
+                    return claim.ID;
+                }
+            }
+            throw new Exception("Could not find any claim that did not overlap");
         }
     }
 }

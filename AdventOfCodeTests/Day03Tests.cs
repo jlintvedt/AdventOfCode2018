@@ -13,11 +13,13 @@ namespace AdventOfCode.Tests
     public class Day03Tests
     {
         string[] inputDay03;
+        string[] inputDay03Example1;
 
         [TestInitialize]
         public void TestInitialize()
         {
             inputDay03 = Helper.LoadResourceStringArray("D03_Puzzle", Environment.NewLine);
+            inputDay03Example1 = Helper.LoadResourceStringArray("D03_E1", Environment.NewLine);
         }
 
         // == == == == == Puzzle 1 == == == == ==
@@ -35,8 +37,7 @@ namespace AdventOfCode.Tests
         [TestMethod()]
         public void Puzzle1ExampleTest()
         {
-            var input = Helper.LoadResourceStringArray("D03_E1", Environment.NewLine);
-            Assert.AreEqual(4, Day03.Puzzle1(input));
+            Assert.AreEqual(4, Day03.Puzzle1(inputDay03Example1));
         }
 
         [TestMethod()]
@@ -45,7 +46,17 @@ namespace AdventOfCode.Tests
             Assert.AreEqual(96569, Day03.Puzzle1(inputDay03));
         }
 
-
         // == == == == == Puzzle 2 == == == == ==
+        [TestMethod()]
+        public void Puzzle2ExampleTest()
+        {
+            Assert.AreEqual(3, Day03.Puzzle2(inputDay03Example1));
+        }
+
+        [TestMethod()]
+        public void Puzzle2Test()
+        {
+            Assert.AreEqual(1023, Day03.Puzzle2(inputDay03));
+        }
     }
 }
