@@ -14,6 +14,14 @@ namespace AdventOfCode.Tests
     [TestClass()]
     public class Day02Tests
     {
+        string[] inputDay02;
+
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            inputDay02 = Helper.LoadResourceStringArray("D02_P1", Environment.NewLine);
+        }
+
         // == == == == == Puzzle 1 == == == == ==
         [TestMethod()]
         public void Puzzle1ExampleTest()
@@ -25,7 +33,7 @@ namespace AdventOfCode.Tests
         [TestMethod()]
         public void Puzzle1Test()
         {
-            var checksum = Day02.Puzzle1(Helper.LoadResourceStringArray("D02_P1", Environment.NewLine));
+            var checksum = Day02.Puzzle1(inputDay02);
             Assert.AreEqual(8610, checksum);
         }
 
@@ -57,7 +65,7 @@ namespace AdventOfCode.Tests
         [TestMethod()]
         public void Puzzle2Test()
         {
-            var commonCharacters = Day02.Puzzle2(Helper.LoadResourceStringArray("D02_P1", Environment.NewLine));
+            var commonCharacters = Day02.Puzzle2(inputDay02);
             Assert.AreEqual("iosnxmfkpabcjpdywvrtahluy", commonCharacters);
         }
 

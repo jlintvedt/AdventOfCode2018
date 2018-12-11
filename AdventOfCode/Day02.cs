@@ -75,6 +75,11 @@ namespace AdventOfCode
                 if (a[i] != b[i])
                 {
                     diff++;
+                    // In this case we dont really care how many, as long as there is more than one difference
+                    if (diff>1)
+                    {
+                        break;
+                    }
                 }
             }
             return diff;
