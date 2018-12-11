@@ -160,6 +160,12 @@
   <data name="D03_Puzzle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>resources\D03_Puzzle.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
+  <data name="D04_E1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\D04_E1.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="D04_Puzzle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\D04_Puzzle.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
   <data name="HelperIntArray" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>resources\HelperIntArray.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>

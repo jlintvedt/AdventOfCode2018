@@ -12,10 +12,20 @@ namespace AdventOfCode.Tests
     [TestClass()]
     public class Day04Tests
     {
+        string[] inputDay04;
+        string[] inputDay04Example1;
+
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            inputDay04 = Helper.LoadResourceStringArray("D04_Puzzle", Environment.NewLine);
+            inputDay04Example1 = Helper.LoadResourceStringArray("D04_E1", Environment.NewLine);
+        }
+
         [TestMethod()]
         public void Puzzle1ExampleTest()
         {
-            Assert.Fail();
+            Assert.AreEqual(240, Day04.Puzzle1(inputDay04));
         }
 
         [TestMethod()]

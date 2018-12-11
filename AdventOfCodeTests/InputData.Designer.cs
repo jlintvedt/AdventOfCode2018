@@ -341,6 +341,52 @@ namespace AdventOfCodeTests {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to [1518-11-01 00:00] Guard #10 begins shift
+        ///[1518-11-01 00:05] falls asleep
+        ///[1518-11-01 00:25] wakes up
+        ///[1518-11-01 00:30] falls asleep
+        ///[1518-11-01 00:55] wakes up
+        ///[1518-11-01 23:58] Guard #99 begins shift
+        ///[1518-11-02 00:40] falls asleep
+        ///[1518-11-02 00:50] wakes up
+        ///[1518-11-03 00:05] Guard #10 begins shift
+        ///[1518-11-03 00:24] falls asleep
+        ///[1518-11-03 00:29] wakes up
+        ///[1518-11-04 00:02] Guard #99 begins shift
+        ///[1518-11-04 00:36] falls asleep
+        ///[1518-11-04 00:46] wakes up
+        ///[1518-11-05 00:03] Guard #99 b [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string D04_E1 {
+            get {
+                return ResourceManager.GetString("D04_E1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [1518-04-22 00:56] falls asleep
+        ///[1518-07-23 00:09] falls asleep
+        ///[1518-10-29 00:02] falls asleep
+        ///[1518-07-29 00:58] wakes up
+        ///[1518-03-18 00:15] falls asleep
+        ///[1518-11-08 00:02] Guard #2851 begins shift
+        ///[1518-02-28 00:43] falls asleep
+        ///[1518-06-24 00:52] wakes up
+        ///[1518-06-08 00:29] falls asleep
+        ///[1518-09-18 00:30] falls asleep
+        ///[1518-07-07 00:00] Guard #3433 begins shift
+        ///[1518-11-01 00:53] falls asleep
+        ///[1518-09-04 00:00] Guard #3433 begins shift
+        ///[1518-08-14 00:48] wakes up
+        ///[1518-06-19 00:43] wakes u [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string D04_Puzzle {
+            get {
+                return ResourceManager.GetString("D04_Puzzle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to -3
         ///-2
         ///-1
