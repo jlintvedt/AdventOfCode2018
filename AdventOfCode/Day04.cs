@@ -43,147 +43,155 @@ namespace AdventOfCode
         public class ShiftInfo
         {
             public int ID;
-            public DateTime ShiftStart, FallsAsleep, WakesUp;
-            private int minutesAsleep;
-
-            public ShiftInfo() {}
+            public DateTime Date;
+            public readonly bool[] IsAsleep = new bool[60];
+            public int MinutesAsleep;
+            private List<Record> records;
 
             public ShiftInfo(Record record)
             {
-                AddRecord(record);
+                if (record.Type != Record.RecordType.ShiftStart)
+                {
+                    throw new ArgumentException("Must be initialized with record of type ShiftStart");
+                }
+                ID = record.ID;
+                Date = record.Time.Hour == 0 ? record.Time.Date : record.Time.AddDays(1).Date;
+                records = new List<Record>();
             }
+
+            public void AddRecord(Record record)
+            {
+                if (records.Count%2==0 && record.Type!=Record.RecordType.FallAsleep)
+                {
+                    throw new ArgumentException("Can't have 2 FallingAsleep events after eachother");
+                } else if (records.Count % 2 == 1 && record.Type != Record.RecordType.WakeUp)
+                {
+                    throw new ArgumentException("WakeUp records must be preceeded by FallingAsleep event");
+                }
+                records.Add(record);
+            }
+
+            public int CalculateTimeAsleep()
+            {
+                if (records.Count%2 != 0)
+                {
+                    throw new Exception("Invalid ShiftInfo, uneven amount of Records. Meaning fallingAsleep is not followed by wakingUp");
+                }
+
+                var pos = 0;
+                foreach (var record in records)
+                {
+                    if (record.Type == Record.RecordType.FallAsleep)
+                    {
+                        pos = record.Time.Minute;
+                    }
+                    else
+                    {
+                        for (; pos < record.Time.Minute; pos++)
+                        {
+                            IsAsleep[pos] = true;
+                            MinutesAsleep++;
+                        }
+                    }
+                }
+                return MinutesAsleep;
+            }
+        }
+
+        public class GuardStats
+        {
+            public int ID;
+            private List<ShiftInfo> shifts;
 
             public int MinutesAsleep
             {
                 get
                 {
-                    if (minutesAsleep != 0){
-                        return minutesAsleep;
-                    }
-                    // Validate
-                    if (ShiftStart == null || FallsAsleep == null || WakesUp == null){
-                        throw new Exception("Need to add all record types to calculate value");
-                    }
-                    minutesAsleep = (WakesUp - FallsAsleep).Minutes;
-                    return minutesAsleep;
-                }
-            }
-
-            public void AddRecord(Record record)
-            {
-                switch (record.Type) {
-                    case Record.RecordType.ShiftStart:
-                        ID = record.ID;
-                        ShiftStart = record.Time;
-                        break;
-                    case Record.RecordType.FallAsleep:
-                        FallsAsleep = record.Time;
-                        break;
-                    case Record.RecordType.WakeUp:
-                        WakesUp = record.Time;
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
-
-        public class ShiftCalendar
-        {
-            private readonly Dictionary<DateTime, ShiftInfo> shifts;
-            private readonly Dictionary<int, List<DateTime>> guardWorkingDays;
-
-            public List<DateTime> DaysWithShifts
-            {
-                get
-                {
-                    var daysWithShifts = shifts.Keys.ToList();
-                    daysWithShifts.Sort();
-                    return daysWithShifts;
-                }
-            }
-
-            public List<int> GuardIDs
-            {
-                get
-                {
-                    var IDs = guardWorkingDays.Keys.ToList();
-                    IDs.Sort();
-                    return IDs;
-
-                }
-            }
-
-            public ShiftCalendar()
-            {
-                shifts = new Dictionary<DateTime, ShiftInfo>();
-                guardWorkingDays = new Dictionary<int, List<DateTime>>();
-            }
-
-            public void AddRecord(Record record)
-            {
-                // Some start their shift just before midnight, so we need to adjust the Date to reflect this
-                var adjustedDate = record.Time.Hour <= 0 ? record.Time.Date : (record.Time.AddDays(1).Date);
-                // Save new info to record
-                if (shifts.TryGetValue(adjustedDate, out ShiftInfo shift))
-                {
-                    shift.AddRecord(record);
-                } else
-                {
-                    shifts.Add(adjustedDate, new ShiftInfo(record));
-                }
-                // Add Guard ID to seperate list
-                if (record.Type == Record.RecordType.ShiftStart)
-                {
-                    if (guardWorkingDays.TryGetValue(record.ID, out List<DateTime> shiftDates))
+                    int min = 0;
+                    foreach (var shift in shifts)
                     {
-                        shiftDates.Add(adjustedDate);
+                        min += shift.CalculateTimeAsleep();
                     }
-                    else
-                    {
-                        guardWorkingDays.Add(record.ID, new List<DateTime>() { adjustedDate });
-                    }
+                    return min;
                 }
             }
 
-            public List<ShiftInfo>GetShiftsForGuard(int guardID)
+            public GuardStats()
             {
-                if (guardWorkingDays.TryGetValue(guardID, out List<DateTime> shiftDates))
-                {
-                    shiftDates.Sort();
-                    List<ShiftInfo> shifts = new List<ShiftInfo>();
-                    foreach (var date in shiftDates)
-                    {
-                        shifts.Add(GetShift(date));
-                    }
-                    return shifts;
-                } else
-                {
-                    throw new ArgumentException("Invalid GuardID, no shifts registered");
-                }
+                shifts = new List<ShiftInfo>();
             }
 
-            public ShiftInfo GetShift(DateTime date)
+            public void AddShift(ShiftInfo si)
             {
-                if (shifts.TryGetValue(date, out ShiftInfo shift))
+                shifts.Add(si);
+            }
+
+            public int FindSleepiestMinute()
+            {
+                var timesAsleep = new int[60];
+                foreach (var shift in shifts)
                 {
-                    return shift;
-                } else
-                {
-                    throw new ArgumentException("Shift date does not exist");
+                    for (int i = 0; i < 60; i++)
+                    {
+                        timesAsleep[i] += shift.IsAsleep[i]?1:0;
+                    }
                 }
+                return Array.IndexOf(timesAsleep, timesAsleep.Max());
             }
         }
 
         // == == == == == Puzzle 1 == == == == ==
         public static int Puzzle1(string[] input)
         {
-            var calendar = new ShiftCalendar();
+            var records = new List<Record>();
+            // Parse input
             foreach (var rawRecord in input)
             {
-                calendar.AddRecord(new Record(rawRecord));
+                var record = new Record(rawRecord);
+                records.Add(record);
             }
-            return 0;
+            records.Sort((x, y) => x.Time.CompareTo(y.Time));
+            // Create ShiftInfos
+            var guardStats = new Dictionary<int, GuardStats>();
+            GuardStats gs;
+            ShiftInfo si = null;
+            foreach (var record in records)
+            {
+                // Shift Start
+                if (record.Type == Record.RecordType.ShiftStart)
+                {
+                    // Next guard
+                    si = new ShiftInfo(record);
+                    if (guardStats.TryGetValue(record.ID, out gs))
+                    {
+                        gs.AddShift(si);
+                    } else
+                    {
+                        gs = new GuardStats();
+                        gs.ID = si.ID;
+                        gs.AddShift(si);
+                        guardStats.Add(gs.ID, gs);
+                    }
+                }
+                // FallAsleep / WakeUp
+                else 
+                {
+                    si.AddRecord(record);
+                }
+            }
+            // Find sleepiest guard
+            int maxAsleepMin = 0, maxAsleepID = 0;
+            foreach (var guard in guardStats)
+            {
+                var minSleep = guard.Value.MinutesAsleep;
+                if (minSleep > maxAsleepMin)
+                {
+                    maxAsleepMin = minSleep;
+                    maxAsleepID = guard.Value.ID;
+                }
+            }
+
+            return guardStats[maxAsleepID].FindSleepiestMinute() * maxAsleepID;
         }
 
         // == == == == == Puzzle 2 == == == == ==

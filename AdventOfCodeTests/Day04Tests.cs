@@ -43,23 +43,29 @@ namespace AdventOfCode.Tests
         }
 
         [TestMethod]
-        public void ShiftCalendarTest()
+        public void ShiftInfoTest()
         {
-            var calendar = new Day04.ShiftCalendar();
+            Day04.ShiftInfo shiftInfo = null;
             foreach (var rawRecord in inputDay04Example1)
             {
-                calendar.AddRecord(new Day04.Record(rawRecord));
+                var record = new Day04.Record(rawRecord);
+                if (record.Type == Day04.Record.RecordType.ShiftStart)
+                {
+                    if (shiftInfo==null)
+                    {
+                        shiftInfo = new Day04.ShiftInfo(record);
+                    } else
+                    {
+                        break;
+                    }
+                } else
+                {
+                    shiftInfo.AddRecord(record);
+                }
             }
-            var guardIDs = calendar.GuardIDs;
-            // Should have guard #10 and #99
-            CollectionAssert.AreEqual(new List<int>() { 10, 99 }, guardIDs);
-            // Guard #10 Should have 2 shifts
-            var shifts = calendar.GetShiftsForGuard(10);
-            Assert.AreEqual(2, shifts.Count);
-            Assert.AreEqual(new DateTime(1518, 11, 1), shifts.First().ShiftStart.Date);
-            Assert.AreEqual(new DateTime(1518, 11, 3), shifts.Last().ShiftStart.Date);
-            // Guard #99 should have 3 shifts
-            Assert.AreEqual(3, calendar.GetShiftsForGuard(99).Count);
+            shiftInfo.CalculateTimeAsleep();
+            Assert.AreEqual(45, shiftInfo.MinutesAsleep);
+            CollectionAssert.AreEqual(new bool[] {false,false,false,false,false,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,false,false,false,false,false,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,false,false,false,false,false}, shiftInfo.IsAsleep);
         }
 
         // == == == == == Puzzle 1 == == == == ==
@@ -72,7 +78,7 @@ namespace AdventOfCode.Tests
         [TestMethod()]
         public void Puzzle1Test()
         {
-            Assert.Fail();
+            Assert.AreEqual(71748, Day04.Puzzle1(inputDay04));
         }
 
         // == == == == == Puzzle 2 == == == == ==
