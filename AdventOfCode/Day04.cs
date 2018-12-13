@@ -126,7 +126,7 @@ namespace AdventOfCode
                 shifts.Add(si);
             }
 
-            public int FindSleepiestMinute()
+            public int FindSleepiestMinute(out int mostTimesAsleep)
             {
                 var timesAsleep = new int[60];
                 foreach (var shift in shifts)
@@ -136,7 +136,8 @@ namespace AdventOfCode
                         timesAsleep[i] += shift.IsAsleep[i]?1:0;
                     }
                 }
-                return Array.IndexOf(timesAsleep, timesAsleep.Max());
+                mostTimesAsleep = timesAsleep.Max();
+                return Array.IndexOf(timesAsleep, mostTimesAsleep);
             }
         }
 
@@ -191,13 +192,69 @@ namespace AdventOfCode
                 }
             }
 
-            return guardStats[maxAsleepID].FindSleepiestMinute() * maxAsleepID;
+            return guardStats[maxAsleepID].FindSleepiestMinute(out int noNeed) * maxAsleepID;
         }
 
         // == == == == == Puzzle 2 == == == == ==
         public static int Puzzle2(string[] input)
         {
-            return 0;
+            // CopyPaste from Puzzle 1
+            var records = new List<Record>();
+            // Parse input
+            foreach (var rawRecord in input)
+            {
+                var record = new Record(rawRecord);
+                records.Add(record);
+            }
+            records.Sort((x, y) => x.Time.CompareTo(y.Time));
+            // Create ShiftInfos
+            var guardStats = new Dictionary<int, GuardStats>();
+            GuardStats gs;
+            ShiftInfo si = null;
+            foreach (var record in records)
+            {
+                // Shift Start
+                if (record.Type == Record.RecordType.ShiftStart)
+                {
+                    // Next guard
+                    si = new ShiftInfo(record);
+                    if (guardStats.TryGetValue(record.ID, out gs))
+                    {
+                        gs.AddShift(si);
+                    }
+                    else
+                    {
+                        gs = new GuardStats();
+                        gs.ID = si.ID;
+                        gs.AddShift(si);
+                        guardStats.Add(gs.ID, gs);
+                    }
+                }
+                // FallAsleep / WakeUp
+                else
+                {
+                    si.AddRecord(record);
+                }
+            }
+
+            // Puzzle 2 modifications
+            int asleepTimesMax = 0, asleepMinuteMax = 0, asleepIDMax = 0;   // Max values
+            int asleepTimes, asleepMinute;
+            foreach (var guard in guardStats)
+            {
+                // Need to get this value to populate array on Shift objects
+                // Should be rewritten to calculate all stats on GuardStats class, then access as variables
+                var noNeed = guard.Value.MinutesAsleep;  
+
+                asleepMinute = guard.Value.FindSleepiestMinute(out asleepTimes);
+                if (asleepTimes > asleepTimesMax)
+                {
+                    asleepTimesMax = asleepTimes;
+                    asleepMinuteMax = asleepMinute;
+                    asleepIDMax = guard.Value.ID;
+                }
+            }
+            return asleepMinuteMax * asleepIDMax;
         }
     }
 }

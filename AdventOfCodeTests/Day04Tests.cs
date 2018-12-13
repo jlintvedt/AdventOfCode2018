@@ -85,13 +85,13 @@ namespace AdventOfCode.Tests
         [TestMethod()]
         public void Puzzle2ExampleTest()
         {
-            Assert.Fail();
+            Assert.AreEqual(4455, Day04.Puzzle2(inputDay04Example1));
         }
 
         [TestMethod()]
         public void Puzzle2Test()
         {
-            Assert.Fail();
+            Assert.AreEqual(106850, Day04.Puzzle2(inputDay04));
         }
     }
 }
