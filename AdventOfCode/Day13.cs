@@ -203,8 +203,9 @@ namespace AdventOfCode
                 }
             }
 
-            public void NextTick()
+            public void NextTick(out string crashCoordinates)
             {
+                crashCoordinates = "";
                 carts = carts.OrderBy(c => c.Y).ThenBy(c => c.X).ToList();
                 foreach (var cart in carts)
                 {
@@ -216,8 +217,7 @@ namespace AdventOfCode
                     if (occupiedTrack[cart.Y, cart.X]==true)
                     {
                         CrashOccured(cart);
-                        // Commenting out this breaks Puzzle1
-                        //throw new Exception($"Crash in space:{cart.X},{cart.Y}");
+                        crashCoordinates += $"{cart.X},{cart.Y}";
                     }
                     occupiedTrack[cart.Y, cart.X] = true;
                 }
@@ -263,19 +263,13 @@ namespace AdventOfCode
         public static string Puzzle1(string[] input)
         {
             var ts = new TrackSystem(input);
+            string crashCoordinate;
             for (int i = 0; i < 1000; i++)
             {
-                try
+                ts.NextTick(out crashCoordinate);
+                if (crashCoordinate != "")
                 {
-                    ts.NextTick();
-                }
-                catch (Exception e)
-                {
-                    if (e.Message.StartsWith("Crash in space"))
-                    {
-                        return e.Message.Split(':')[1];
-                    }
-                    throw;
+                    return crashCoordinate;
                 }
             }
             return "No crash in 1000 ticks";
@@ -286,13 +280,7 @@ namespace AdventOfCode
             var ts = new TrackSystem(input);
             for (int i = 0; i < 100000; i++)
             {
-                try
-                {
-                    ts.NextTick();
-                }
-                catch (Exception e)
-                {
-                }
+                ts.NextTick(out string crashCoordinates);
                 if (ts.NumCarts==1)
                 {
                     return $"{ts.FirstCart.X},{ts.FirstCart.Y}";

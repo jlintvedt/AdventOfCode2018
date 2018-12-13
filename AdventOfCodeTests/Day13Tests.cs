@@ -95,7 +95,8 @@ namespace AdventOfCode.Tests
         {
             var ts = new Day13.TrackSystem(new string[] { "->--<-" });
             // Just make sure the system does not crash
-            ts.NextTick();
+            ts.NextTick(out string crashCoordinate);
+            Assert.AreEqual("", crashCoordinate);
         }
 
         [TestMethod()]
@@ -105,20 +106,16 @@ namespace AdventOfCode.Tests
                 "     v",
                 "/----/",
                 "^     "});
-            ts.NextTick();
-            ts.NextTick();
-            ts.NextTick();
+            string crashCoordinate;
+            ts.NextTick(out crashCoordinate);
+            Assert.AreEqual("", crashCoordinate);
+            ts.NextTick(out crashCoordinate);
+            Assert.AreEqual("", crashCoordinate);
+            ts.NextTick(out crashCoordinate);
+            Assert.AreEqual("", crashCoordinate);
             // Crash should happen in 3,1 eventhough 5,0 is the very first cart to move
-            try
-            {
-                ts.NextTick();
-            }
-            catch (Exception e)
-            {
-                Assert.AreEqual("Crash in space:3,1", e.Message);
-                return;
-            }
-            Assert.Fail("Expected Exception when carts crash");
+            ts.NextTick(out crashCoordinate);
+            Assert.AreEqual("3,1", crashCoordinate);
         }
 
         // == == == == == Puzzle 1 == == == == ==
