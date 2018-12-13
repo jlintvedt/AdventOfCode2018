@@ -51,6 +51,7 @@
     <Compile Include="Day02Tests.cs" />
     <Compile Include="Day03Tests.cs" />
     <Compile Include="Day04Tests.cs" />
+    <Compile Include="Day13Tests.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Day01Tests.cs" />
     <Compile Include="HelperTests.cs" />
@@ -100,6 +101,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\D04_Puzzle.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\D13_E1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\D13_Puzzle.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\D13_E2.txt" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

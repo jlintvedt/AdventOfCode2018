@@ -387,6 +387,47 @@ namespace AdventOfCodeTests {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to /-&gt;-\        
+        ///|   |  /----\
+        ///| /-+--+-\  |
+        ///| | |  | v  |
+        ///\-+-/  \-+--/
+        ///  \------/   .
+        /// </summary>
+        internal static string D13_E1 {
+            get {
+                return ResourceManager.GetString("D13_E1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /&gt;-&lt;\  
+        ///|   |  
+        ///| /&lt;+-\
+        ///| | | v
+        ///\&gt;+&lt;/ |
+        ///  |   ^
+        ///  \&lt;-&gt;/.
+        /// </summary>
+        internal static string D13_E2 {
+            get {
+                return ResourceManager.GetString("D13_E2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to                                   /----------------------------\                                                                                      
+        ///  /-------------------------------+----------------------------+-----------------------\                                                              
+        ///  |                               |                            |                     /-+------------------------------------------------\             
+        ///  |               /---------------+--------------------- [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string D13_Puzzle {
+            get {
+                return ResourceManager.GetString("D13_Puzzle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to -3
         ///-2
         ///-1
