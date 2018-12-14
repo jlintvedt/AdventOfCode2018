@@ -26,5 +26,19 @@ namespace AdventOfCode.Tests
             Assert.AreEqual("5992684592", Day14.Puzzle1(165061));
         }
 
+        [TestMethod()]
+        public void Puzzle2ExampleTest()
+        {
+            Assert.AreEqual(9, Day14.Puzzle2("51589"));
+            Assert.AreEqual(5, Day14.Puzzle2("01245"));
+            Assert.AreEqual(18, Day14.Puzzle2("92510"));
+            Assert.AreEqual(2018, Day14.Puzzle2("59414"));
+        }
+
+        [TestMethod()]
+        public void Puzzle2Test()
+        {
+            Assert.AreEqual(2018, Day14.Puzzle2("165061"));
+        }
     }
 }
