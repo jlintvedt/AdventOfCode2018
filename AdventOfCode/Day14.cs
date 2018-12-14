@@ -50,6 +50,29 @@ namespace AdventOfCode
                 return string.Join("",idealRecipes);
             }
 
+            public int RecipesNeededToMakeGoalRecipe(int[] goalRecipe)
+            {
+                int readHead = 0;
+                int goalLength = goalRecipe.Length;
+                for (int i = 0; i < 1000000000; i++)
+                {
+                    MakeHotChocolate();
+                    for (; readHead < numRecipes-goalLength; readHead++){
+                        for (int j = 0; j < goalLength; j++){
+                            if (goalRecipe[j] != recipes[readHead+j])
+                            {
+                                break;
+                            }
+                            if (j==goalLength-1)
+                            {
+                                return readHead;
+                            }
+                        }
+                    }
+                }
+                throw new Exception("Could not find goal recipe after making 1'000'000'000 recipes");
+            }
+
             private void MakeHotChocolate()
             {
                 // Find new recipe
@@ -81,9 +104,17 @@ namespace AdventOfCode
             return cb.FindIdealRecipes(recipesToMake);
         }
 
-        public static int Puzzle2(string goalRecipes)
+        public static int Puzzle2(string goalRecipe)
         {
-            return 0;
+            // Convert input to int array
+            var goal = new int[goalRecipe.Length];
+            for (int i = 0; i < goalRecipe.Length; i++)
+            {
+                goal[i] = goalRecipe[i] - '0';
+            }
+
+            var cb = new Cookbook(new int[] { 3, 7 });
+            return cb.RecipesNeededToMakeGoalRecipe(goal);
         }
     }
 }

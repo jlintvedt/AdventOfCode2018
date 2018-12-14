@@ -38,7 +38,7 @@ namespace AdventOfCode.Tests
         [TestMethod()]
         public void Puzzle2Test()
         {
-            Assert.AreEqual(2018, Day14.Puzzle2("165061"));
+            Assert.AreEqual(20181148, Day14.Puzzle2("165061"));
         }
     }
 }
