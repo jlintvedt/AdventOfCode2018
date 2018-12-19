@@ -23,12 +23,8 @@ namespace AdventOfCode
                 int readLeft = -1, readRight = 0;
                 do
                 {
-                    // Unreacted is empty, need to copy next unit over
-                    if (readLeft < 0)
-                    {
-                        unreacted[++readLeft] = units[readRight++];
-                    }
-                    if (ShouldReact(unreacted[readLeft], units[readRight]))
+                    // First make sure unreacted is not empty, then check for reaction
+                    if (readLeft>=0 && ShouldReact(unreacted[readLeft], units[readRight]))
                     {
                         readLeft--;
                         readRight++;
@@ -36,8 +32,40 @@ namespace AdventOfCode
                         unreacted[++readLeft] = units[readRight++];
                     }
                 } while (readRight < units.Length);
+
                 // Need to add 1 as the read head is 1 lower than the length of unreacted units
                 return readLeft+1;
+            }
+
+            public int ReduceWithSkip(char skipUnit)
+            {
+                byte[] unreacted = new byte[units.Length];
+                int readLeft = -1, readRight = 0;
+                byte skipUpper = (byte)skipUnit;
+                byte skipLower = (byte)(skipUpper + 32);
+
+                do
+                {
+                    // Check if next unit should be skipped
+                    if ((units[readRight] == skipUpper || units[readRight] == skipLower))
+                    {
+                        readRight++;
+                        continue;
+                    }
+                    // First make sure unreacted is not empty, then check for reaction
+                    if (readLeft >= 0 && ShouldReact(unreacted[readLeft], units[readRight]))
+                    {
+                        readLeft--;
+                        readRight++;
+                    }
+                    else
+                    {
+                        unreacted[++readLeft] = units[readRight++];
+                    }
+                } while (readRight < units.Length);
+
+                // Need to add 1 as the read head is 1 lower than the length of unreacted units
+                return readLeft + 1;
             }
 
             private bool ShouldReact(byte a, byte b)
@@ -60,7 +88,14 @@ namespace AdventOfCode
         // == == == == == Puzzle 2 == == == == ==
         public static int Puzzle2(string input)
         {
-            return 0;
+            var ar = new AlchemicalReducer(input);
+            int shortestPolymer = input.Length;
+            foreach (var unit in "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray())
+            {
+                var reducedLength = ar.ReduceWithSkip(unit);
+                shortestPolymer = shortestPolymer > reducedLength ? reducedLength : shortestPolymer;
+            }
+            return shortestPolymer;
         }
     }
 }
