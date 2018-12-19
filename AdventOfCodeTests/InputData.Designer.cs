@@ -387,6 +387,15 @@ namespace AdventOfCodeTests {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to bBkKQqgaAGzyYZCcGgXVvGgxQxtTXwWqJOojHhWwHhAaIZKkzcCCcHhqhHbBnNNnTtFfQzZiGgeEmHhgGMDdYyfFKJVvjAaAaoeEVvxXpPfFlLlLqQWwhHORrxCchHXLlkHhiIgyYKkGlLAaqQfgGFLlyYFkKtTcCIfFifTYMGgiImyJjmdDMtnHhpPpPAqQTtavaAVfFxvVZzXoOJjNDdDwuUWdlYsSyOoLCNYuJjUTtyUuNngGiInVvnNvVeoOGgdDEcvVqTcCaAfFtcCzVvxsSXKkZDxCcXdaqYyQNnuUxTtXFfAuUBbjrSsRJaDdgGAgGcCKkOoUuFtTfWwIjJiQfFqLgGIiNnltyYfFKqQXxIzZikKkTHhQOQqDdoKGguUOMkKrRpPmDdoKkgGGgQKkfznNZcCFtRrYyTwwWWXxQqoOiIokKOXxHhYyRrwkOonNKWSjJsdDDdfFqZTVvzbBqQTtZGgIitQqNncCjJJjYyULlnNbQqEeeEiIzZBG [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string D05_Puzzle {
+            get {
+                return ResourceManager.GetString("D05_Puzzle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to /-&gt;-\        
         ///|   |  /----\
         ///| /-+--+-\  |
