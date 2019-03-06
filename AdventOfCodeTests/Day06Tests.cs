@@ -25,13 +25,13 @@ namespace AdventOfCode.Tests
         [TestMethod()]
         public void Puzzle1ExampleTest()
         {
-            Assert.AreEqual(10, Day06.Puzzle1(inputDay06Example1));
+            Assert.AreEqual(17, Day06.Puzzle1(inputDay06Example1));
         }
 
         [TestMethod()]
         public void Puzzle1Test()
         {
-            Assert.AreEqual(10598, Day06.Puzzle1(inputDay06));
+            Assert.AreEqual(5365, Day06.Puzzle1(inputDay06));
         }
 
         //[TestMethod()]
