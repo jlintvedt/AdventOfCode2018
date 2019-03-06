@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AdventOfCodeTests</RootNamespace>
     <AssemblyName>AdventOfCodeTests</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
@@ -19,6 +19,7 @@
     <TestProjectType>UnitTest</TestProjectType>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -52,6 +53,7 @@
     <Compile Include="Day03Tests.cs" />
     <Compile Include="Day04Tests.cs" />
     <Compile Include="Day05Tests.cs" />
+    <Compile Include="Day06Tests.cs" />
     <Compile Include="Day13Tests.cs" />
     <Compile Include="Day14Tests.cs" />
     <Compile Include="Helper.cs" />
@@ -115,6 +117,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\D05_Puzzle.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\D06_E1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\D06_Puzzle.txt" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
