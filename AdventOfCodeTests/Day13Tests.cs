@@ -122,6 +122,7 @@ namespace AdventOfCode.Tests
             Assert.AreEqual("7,3", crashSpace);
         }
 
+        // Runtime on Surface Book 2 i7: <1 ms
         [TestMethod]
         public void Puzzle1Test()
         {
@@ -137,6 +138,7 @@ namespace AdventOfCode.Tests
             Assert.AreEqual("6,4", crashSpace);
         }
 
+        // Runtime on Surface Book 2 i7: 17 ms
         [TestMethod]
         public void Puzzle2Test()
         {

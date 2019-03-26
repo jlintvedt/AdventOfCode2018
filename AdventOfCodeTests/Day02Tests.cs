@@ -24,6 +24,7 @@ namespace AdventOfCode.Tests
             Assert.AreEqual(12, checksum);
         }
 
+        // Runtime on Surface Book 2 i7: <1 ms
         [TestMethod]
         public void Puzzle1Test()
         {
@@ -56,6 +57,7 @@ namespace AdventOfCode.Tests
             Assert.AreEqual("fgij", commonCharacters);
         }
 
+        // Runtime on Surface Book 2 i7: 1 ms
         [TestMethod]
         public void Puzzle2Test()
         {

@@ -71,6 +71,7 @@ namespace AdventOfCode.Tests
             Assert.AreEqual(240, Day04.Puzzle1(inputDay04Example1));
         }
 
+        // Runtime on Surface Book 2 i7: 2 ms
         [TestMethod]
         public void Puzzle1Test()
         {
@@ -84,6 +85,7 @@ namespace AdventOfCode.Tests
             Assert.AreEqual(4455, Day04.Puzzle2(inputDay04Example1));
         }
 
+        // Runtime on Surface Book 2 i7: 3 ms
         [TestMethod]
         public void Puzzle2Test()
         {

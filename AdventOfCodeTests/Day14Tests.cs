@@ -20,6 +20,7 @@ namespace AdventOfCode.Tests
             Assert.AreEqual("5941429882", Day14.Puzzle1(2018));
         }
 
+        // Runtime on Surface Book 2 i7: 7 ms
         [TestMethod]
         public void Puzzle1Test()
         {
@@ -35,6 +36,7 @@ namespace AdventOfCode.Tests
             Assert.AreEqual(2018, Day14.Puzzle2("59414"));
         }
 
+        // Runtime on Surface Book 2 i7: 1.6 sec
         [TestMethod]
         public void Puzzle2Test()
         {

@@ -30,6 +30,7 @@ namespace AdventOfCode.Tests
             Assert.AreEqual(-6, Day01.Puzzle1(InputData.ResourceManager.GetObject("D01_E4").ToString().Replace(",", Environment.NewLine)));
         }
 
+        // Runtime on Surface Book 2 i7: <1 ms
         [TestMethod]
         public void Puzzle1Test()
         {
@@ -52,6 +53,7 @@ namespace AdventOfCode.Tests
             Assert.AreEqual(14, Day01.Puzzle2(InputData.ResourceManager.GetObject("D01_E8").ToString().Replace(",", Environment.NewLine)));
         }
 
+        // Runtime on Surface Book 2 i7: 45 ms
         [TestMethod]
         public void Puzzle2Test()
         {
