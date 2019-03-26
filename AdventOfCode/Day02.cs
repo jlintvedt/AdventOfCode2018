@@ -9,8 +9,10 @@ namespace AdventOfCode
     public class Day02
     {
         // == == == == == Puzzle 1 == == == == ==
-        public static int Puzzle1(string[] boxIDs)
+        public static int Puzzle1(string input)
         {
+            var boxIDs = Common.ParseStringArray(input);
+
             int doubles = 0, triples = 0;
             int totalDoubles = 0, totalTriples = 0;
             foreach (var id in boxIDs)
@@ -54,8 +56,9 @@ namespace AdventOfCode
         }
 
         // == == == == == Puzzle 2 == == == == ==
-        public static string Puzzle2(string[] boxIDs)
+        public static string Puzzle2(string input)
         {
+            var boxIDs = Common.ParseStringArray(input);
             for (int i = 0; i < boxIDs.Length; i++)
             {
                 for (int j = i+1; j < boxIDs.Length; j++)

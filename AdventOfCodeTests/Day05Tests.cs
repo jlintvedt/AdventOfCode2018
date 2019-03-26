@@ -1,15 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AdventOfCode;
-using AdventOfCodeTests;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using AdventOfCodeTests;
 
 namespace AdventOfCode.Tests
 {
-    [TestClass()]
+    [TestClass]
     public class Day05Tests
     {
         string inputDay05;
@@ -22,19 +18,19 @@ namespace AdventOfCode.Tests
             inputDay05Example1 = "dabAcCaCBAcCcaDA";
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void Puzzle1ExampleTest()
         {
             Assert.AreEqual(10, Day05.Puzzle1(inputDay05Example1));
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void Puzzle1Test()
         {
             Assert.AreEqual(10598, Day05.Puzzle1(inputDay05));
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void Puzzle2ExampleTest()
         {
             // First test directly on AlchemicalReducer
@@ -47,7 +43,7 @@ namespace AdventOfCode.Tests
             Assert.AreEqual(4, Day05.Puzzle2(inputDay05Example1));
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void Puzzle2Test()
         {
             Assert.AreEqual(5312, Day05.Puzzle2(inputDay05));

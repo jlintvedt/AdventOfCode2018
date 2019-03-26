@@ -70,8 +70,9 @@ namespace AdventOfCode
         }
 
         // == == == == == Puzzle 1 == == == == ==
-        public static int Puzzle1(string[] rawInput)
+        public static int Puzzle1(string input)
         {
+            var rawInput = Common.ParseStringArray(input);
             var fabric = new Fabric(1000, 1000); // Don't like this. Makes assumptions about the input
             int overlaps = 0;
             foreach (var claimString in rawInput)
@@ -89,8 +90,9 @@ namespace AdventOfCode
         /// </summary>
         /// <param name="rawInput"></param>
         /// <returns>Returns the first claim that </returns>
-        public static int Puzzle2(string[] rawInput)
+        public static int Puzzle2(string input)
         {
+            var rawInput = Common.ParseStringArray(input);
             var fabric = new Fabric(1000, 1000); // Don't like this. Makes assumptions about the input
             // First add all claims
             foreach (var claimString in rawInput)

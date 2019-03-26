@@ -1,30 +1,26 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AdventOfCode;
-using AdventOfCodeTests;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using AdventOfCodeTests;
 
 namespace AdventOfCode.Tests
 {
-    [TestClass()]
+    [TestClass]
     public class Day13Tests
     {
-        string[] inputDay13;
-        string[] inputDay13Example1;
-        string[] inputDay13Example2;
+        string inputDay13;
+        string inputDay13Example1;
+        string inputDay13Example2;
 
         [TestInitialize]
         public void TestInitialize()
         {
-            inputDay13 = Helper.LoadResourceStringArray("D13_Puzzle", Environment.NewLine);
-            inputDay13Example1 = Helper.LoadResourceStringArray("D13_E1", Environment.NewLine);
-            inputDay13Example2 = Helper.LoadResourceStringArray("D13_E2", Environment.NewLine);
+            inputDay13 = InputData.ResourceManager.GetObject("D13_Puzzle").ToString();
+            inputDay13Example1 = InputData.ResourceManager.GetObject("D13_E1").ToString();
+            inputDay13Example2 = InputData.ResourceManager.GetObject("D13_E2").ToString();
         }
         // == == == == == Common == == == == ==
-        [TestMethod()]
+        [TestMethod]
         public void CartTurningTest()
         {
             var cart = new Day13.Cart(Day13.Directions.south, 0, 0);
@@ -44,7 +40,7 @@ namespace AdventOfCode.Tests
             Assert.AreEqual(Day13.Directions.south, cart.Direction);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void CartMovingTest()
         {
             // Track
@@ -78,7 +74,7 @@ namespace AdventOfCode.Tests
             }
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void TrackSystemInitializeTest()
         {
             var ts = new Day13.TrackSystem(new string[] {
@@ -90,7 +86,7 @@ namespace AdventOfCode.Tests
             Assert.AreEqual(1, ts.NumCarts);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void TrackSystemMoveTest()
         {
             var ts = new Day13.TrackSystem(new string[] { "->--<-" });
@@ -99,7 +95,7 @@ namespace AdventOfCode.Tests
             Assert.AreEqual("", crashCoordinate);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void TrackSystemCrashTest()
         {
             var ts = new Day13.TrackSystem(new string[] {
@@ -119,14 +115,14 @@ namespace AdventOfCode.Tests
         }
 
         // == == == == == Puzzle 1 == == == == ==
-        [TestMethod()]
+        [TestMethod]
         public void Puzzle1ExampleTest()
         {
             var crashSpace = Day13.Puzzle1(inputDay13Example1);
             Assert.AreEqual("7,3", crashSpace);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void Puzzle1Test()
         {
             var crashSpace = Day13.Puzzle1(inputDay13);
@@ -134,14 +130,14 @@ namespace AdventOfCode.Tests
         }
 
         // == == == == == Puzzle 2 == == == == ==
-        [TestMethod()]
+        [TestMethod]
         public void Puzzle2ExampleTest()
         {
             var crashSpace = Day13.Puzzle2(inputDay13Example2);
             Assert.AreEqual("6,4", crashSpace);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void Puzzle2Test()
         {
             var crashSpace = Day13.Puzzle2(inputDay13);

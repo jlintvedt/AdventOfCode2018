@@ -1,45 +1,40 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AdventOfCode;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using AdventOfCodeTests;
 
 namespace AdventOfCode.Tests
 {
-    [TestClass()]
+    [TestClass]
     public class Day02Tests
     {
-        string[] inputDay02;
+        string inputDay02;
 
         [TestInitialize]
         public void TestInitialize()
         {
-            inputDay02 = Helper.LoadResourceStringArray("D02_Puzzle", Environment.NewLine);
+            inputDay02 = InputData.ResourceManager.GetObject("D02_Puzzle").ToString();
         }
 
         // == == == == == Puzzle 1 == == == == ==
-        [TestMethod()]
+        [TestMethod]
         public void Puzzle1ExampleTest()
         {
-            var checksum = Day02.Puzzle1(Helper.LoadResourceStringArray("D02_E1", ","));
+            var checksum = Day02.Puzzle1(InputData.ResourceManager.GetObject("D02_E1").ToString().Replace(",", Environment.NewLine));
             Assert.AreEqual(12, checksum);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void Puzzle1Test()
         {
             var checksum = Day02.Puzzle1(inputDay02);
             Assert.AreEqual(8610, checksum);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void FindDoublesAndTriplesTest()
         {
-            var boxIDs = Helper.LoadResourceStringArray("D02_E1", ",");
+            var boxIDs = Common.ParseStringArray(InputData.ResourceManager.GetObject("D02_E1").ToString().Replace(",", Environment.NewLine));
             Assert.AreEqual(7, boxIDs.Length);
             var expectedDoubles = new int[] { 0, 1, 1, 0, 1, 1, 0 };
             var expectedTriples = new int[] { 0, 1, 0, 1, 0, 0, 1 };
@@ -54,21 +49,21 @@ namespace AdventOfCode.Tests
         }
 
         // == == == == == Puzzle 2 == == == == ==
-        [TestMethod()]
+        [TestMethod]
         public void Puzzle2ExampleTest()
         {
-            var commonCharacters = Day02.Puzzle2(Helper.LoadResourceStringArray("D02_E2", ","));
+            var commonCharacters = Day02.Puzzle2(InputData.ResourceManager.GetObject("D02_E2").ToString().Replace(",", Environment.NewLine));
             Assert.AreEqual("fgij", commonCharacters);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void Puzzle2Test()
         {
             var commonCharacters = Day02.Puzzle2(inputDay02);
             Assert.AreEqual("iosnxmfkpabcjpdywvrtahluy", commonCharacters);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void FindNumDifferentCharactersTest()
         {
             Assert.AreEqual(0, Day02.FindNumDifferentCharacters("abcdef", "abcdef"));
@@ -77,10 +72,10 @@ namespace AdventOfCode.Tests
             Assert.AreEqual(2, Day02.FindNumDifferentCharacters("abcdef", "abcdXX"));
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void FindCommonCharactersTest()
         {
-            Assert.AreEqual("abcefg", Day02.FindCommonCharacters("abcdefg","abcXefg"));
+            Assert.AreEqual("abcefg", Day02.FindCommonCharacters("abcdefg", "abcXefg"));
             Assert.AreEqual("cde", Day02.FindCommonCharacters("abcdefg", "XXcdeXX"));
         }
     }

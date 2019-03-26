@@ -56,15 +56,14 @@
     <Compile Include="Day06Tests.cs" />
     <Compile Include="Day13Tests.cs" />
     <Compile Include="Day14Tests.cs" />
-    <Compile Include="Helper.cs" />
     <Compile Include="Day01Tests.cs" />
-    <Compile Include="HelperTests.cs" />
     <Compile Include="InputData.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>InputData.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CommonTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

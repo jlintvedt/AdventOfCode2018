@@ -1,29 +1,25 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AdventOfCode;
-using AdventOfCodeTests;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using AdventOfCodeTests;
 
 namespace AdventOfCode.Tests
 {
-    [TestClass()]
+    [TestClass]
     public class Day03Tests
     {
-        string[] inputDay03;
-        string[] inputDay03Example1;
+        string inputDay03;
+        string inputDay03Example1;
 
         [TestInitialize]
         public void TestInitialize()
         {
-            inputDay03 = Helper.LoadResourceStringArray("D03_Puzzle", Environment.NewLine);
-            inputDay03Example1 = Helper.LoadResourceStringArray("D03_E1", Environment.NewLine);
+            inputDay03 = InputData.ResourceManager.GetObject("D03_Puzzle").ToString();
+            inputDay03Example1 = InputData.ResourceManager.GetObject("D03_E1").ToString();
         }
 
         // == == == == == Puzzle 1 == == == == ==
-        [TestMethod()]
+        [TestMethod]
         public void ClaimInitializeTest()
         {
             var claim = new Day03.Claim("#13 @ 2,3:4x5");
@@ -34,26 +30,26 @@ namespace AdventOfCode.Tests
             Assert.AreEqual(5, claim.height);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void Puzzle1ExampleTest()
         {
             Assert.AreEqual(4, Day03.Puzzle1(inputDay03Example1));
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void Puzzle1Test()
         {
             Assert.AreEqual(96569, Day03.Puzzle1(inputDay03));
         }
 
         // == == == == == Puzzle 2 == == == == ==
-        [TestMethod()]
+        [TestMethod]
         public void Puzzle2ExampleTest()
         {
             Assert.AreEqual(3, Day03.Puzzle2(inputDay03Example1));
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void Puzzle2Test()
         {
             Assert.AreEqual(1023, Day03.Puzzle2(inputDay03));

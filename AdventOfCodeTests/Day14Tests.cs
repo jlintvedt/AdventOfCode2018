@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace AdventOfCode.Tests
 {
-    [TestClass()]
+    [TestClass]
     public class Day14Tests
     {
-        [TestMethod()]
+        [TestMethod]
         public void Puzzle1ExampleTest()
         {
             Assert.AreEqual("5158916779", Day14.Puzzle1(9));
@@ -20,13 +20,13 @@ namespace AdventOfCode.Tests
             Assert.AreEqual("5941429882", Day14.Puzzle1(2018));
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void Puzzle1Test()
         {
             Assert.AreEqual("5992684592", Day14.Puzzle1(165061));
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void Puzzle2ExampleTest()
         {
             Assert.AreEqual(9, Day14.Puzzle2("51589"));
@@ -35,7 +35,7 @@ namespace AdventOfCode.Tests
             Assert.AreEqual(2018, Day14.Puzzle2("59414"));
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void Puzzle2Test()
         {
             Assert.AreEqual(20181148, Day14.Puzzle2("165061"));

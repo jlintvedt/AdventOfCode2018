@@ -109,10 +109,7 @@ namespace AdventOfCode
         
         public static int Puzzle1(string input)
         {
-            var knownCoordinates = input.Split(new[] { Environment.NewLine }, StringSplitOptions.None)
-                .Select(line => line.Split(new[] { "," }, StringSplitOptions.None))
-                .Select(xy => xy.Select(i => Convert.ToInt32(i)).ToArray())
-                .Select(xy => (x: xy[0], y: xy[1])).ToArray();
+            var knownCoordinates = Common.ParseIntTupleArray(input);
 
             var cm = new ChronalMapper(knownCoordinates);
             cm.MapSpace();
@@ -158,10 +155,7 @@ namespace AdventOfCode
 
         public static int Puzzle2(string input, int totalDistance)
         {
-            var knownCoordinates = input.Split(new[] { Environment.NewLine }, StringSplitOptions.None)
-                .Select(line => line.Split(new[] { "," }, StringSplitOptions.None))
-                .Select(xy => xy.Select(i => Convert.ToInt32(i)).ToArray())
-                .Select(xy => (x: xy[0], y: xy[1])).ToArray();
+            var knownCoordinates = Common.ParseIntTupleArray(input);
             var cm = new ChronalMapper(knownCoordinates);
 
 

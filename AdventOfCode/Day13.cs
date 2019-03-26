@@ -260,9 +260,9 @@ namespace AdventOfCode
             }
         }
 
-        public static string Puzzle1(string[] input)
+        public static string Puzzle1(string input)
         {
-            var ts = new TrackSystem(input);
+            var ts = new TrackSystem(Common.ParseStringArray(input));
             string crashCoordinate;
             for (int i = 0; i < 1000; i++)
             {
@@ -275,9 +275,9 @@ namespace AdventOfCode
             return "No crash in 1000 ticks";
         }
 
-        public static string Puzzle2(string[] input)
+        public static string Puzzle2(string input)
         {
-            var ts = new TrackSystem(input);
+            var ts = new TrackSystem(Common.ParseStringArray(input));
             for (int i = 0; i < 100000; i++)
             {
                 ts.NextTick(out string crashCoordinates);

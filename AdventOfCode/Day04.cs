@@ -142,11 +142,11 @@ namespace AdventOfCode
         }
 
         // == == == == == Puzzle 1 == == == == ==
-        public static int Puzzle1(string[] input)
+        public static int Puzzle1(string input)
         {
             var records = new List<Record>();
             // Parse input
-            foreach (var rawRecord in input)
+            foreach (var rawRecord in Common.ParseStringArray(input))
             {
                 var record = new Record(rawRecord);
                 records.Add(record);
@@ -196,12 +196,12 @@ namespace AdventOfCode
         }
 
         // == == == == == Puzzle 2 == == == == ==
-        public static int Puzzle2(string[] input)
+        public static int Puzzle2(string input)
         {
             // CopyPaste from Puzzle 1
             var records = new List<Record>();
             // Parse input
-            foreach (var rawRecord in input)
+            foreach (var rawRecord in Common.ParseStringArray(input))
             {
                 var record = new Record(rawRecord);
                 records.Add(record);

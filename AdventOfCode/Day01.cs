@@ -12,14 +12,16 @@ namespace AdventOfCode
     public static class Day01
     {
         // == == == == == Puzzle 1 == == == == ==
-        public static int Puzzle1(int[] frequencyChanges)
+        public static int Puzzle1(string input)
         {
+            var frequencyChanges = Common.ParseIntArray(input);
             return frequencyChanges.Sum();
         }
 
         // == == == == == Puzzle 2 == == == == ==
-        public static int Puzzle2(int[] frequencyChanges)
+        public static int Puzzle2(string input)
         {
+            var frequencyChanges = Common.ParseIntArray(input);
             int currentFrequency = 0;
             var previousFrequencies = new HashSet<int>();
             while (true)
