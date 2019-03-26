@@ -53,22 +53,26 @@ namespace AdventOfCode
 
             private int FindClosestNode(int x, int y)
             {
-                var distances = new List<int>();
                 Coordinate cord;
+                int shortestDist = sizeX+sizeY;
+                int shortestIndex = -1;
                 for (int i = 0; i < KnownCoordinates.Length; i++)
                 {
                     cord = KnownCoordinates[i];
-                    distances.Add(Math.Abs(x - cord.x) + Math.Abs(y - cord.y));
+                    int dist = Math.Abs(x - cord.x) + Math.Abs(y - cord.y);
+                    // Check if it is shorter than previous distances
+                    if (dist < shortestDist)
+                    {
+                        shortestDist = dist;
+                        shortestIndex = i;
+                    }
+                    else if (dist == shortestDist)
+                    {
+                        // No longer uniquely shortest
+                        shortestIndex = -1;
+                    }
                 }
-                var minDist = distances.Min();
-                int index = distances.IndexOf(minDist);
-                if (distances.IndexOf(minDist, index+1) != -1)
-                {
-                    // Multiple nodes at minimum distance
-                    return -1;
-                }
-                // Only one node at minimum distance
-                return index;
+                return shortestIndex;
             }
         }
         
