@@ -34,23 +34,16 @@ namespace AdventOfCode.Tests
             Assert.AreEqual(5365, Day06.Puzzle1(inputDay06));
         }
 
-        //[TestMethod()]
-        //public void Puzzle2ExampleTest()
-        //{
-        //    // First test directly on AlchemicalReducer
-        //    var ar = new Day05.AlchemicalReducer(inputDay05Example1);
-        //    Assert.AreEqual(6, ar.ReduceWithSkip('A'));
-        //    Assert.AreEqual(8, ar.ReduceWithSkip('B'));
-        //    Assert.AreEqual(4, ar.ReduceWithSkip('C'));
-        //    Assert.AreEqual(6, ar.ReduceWithSkip('D'));
-        //    // Then test wrapper method
-        //    Assert.AreEqual(4, Day05.Puzzle2(inputDay05Example1));
-        //}
+        [TestMethod()]
+        public void Puzzle2ExampleTest()
+        {
+            Assert.AreEqual(16, Day06.Puzzle2(inputDay06Example1, 32));
+        }
 
-        //[TestMethod()]
-        //public void Puzzle2Test()
-        //{
-        //    Assert.AreEqual(5312, Day05.Puzzle2(inputDay05));
-        //}
+        [TestMethod()]
+        public void Puzzle2Test()
+        {
+            Assert.AreEqual(42513, Day06.Puzzle2(inputDay06, 10000));
+        }
     }
 }

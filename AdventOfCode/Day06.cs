@@ -33,13 +33,17 @@ namespace AdventOfCode
                 sizeY = coordinates.Max(cord => cord.y)+1;
 
                 KnownCoordinates = new Coordinate[coordinates.Length];
-                MappedSpace = new int[sizeX, sizeY];
 
                 // First map known coordinates
                 for (int i = 0; i < coordinates.Length; i++)
                 {
                     KnownCoordinates[i] = new Coordinate(coordinates[i].x, coordinates[i].y);
                 }
+            }
+
+            public void MapSpace()
+            {
+                MappedSpace = new int[sizeX, sizeY];
                 // Then map the remaining space
                 for (int x = 0; x < sizeX; x++)
                 {
@@ -48,7 +52,6 @@ namespace AdventOfCode
                         MappedSpace[x, y] = FindClosestNode(x, y);
                     }
                 }
-                return;
             }
 
             private int FindClosestNode(int x, int y)
@@ -74,6 +77,34 @@ namespace AdventOfCode
                 }
                 return shortestIndex;
             }
+
+            public int FindLargestSafeSpace(int totalDistance)
+            {
+                int nodesWithinSafeDistance = 0;
+                // Check every node if within safe distance
+                for (int x = 0; x < sizeX; x++)
+                {
+                    for (int y = 0; y < sizeY; y++)
+                    {
+                        // Node selected, determine if safe
+                        int dist = 0;
+                        foreach (var cord in KnownCoordinates)
+                        {
+                            dist += Math.Abs(x - cord.x) + Math.Abs(y - cord.y);
+                            if (dist>=totalDistance)
+                            {
+                                break;
+                            }
+                        }
+                        if (dist < totalDistance)
+                        {
+                            nodesWithinSafeDistance++;
+                        }
+                    }
+                }
+
+                return nodesWithinSafeDistance;
+            }
         }
         
         public static int Puzzle1(string input)
@@ -84,6 +115,7 @@ namespace AdventOfCode
                 .Select(xy => (x: xy[0], y: xy[1])).ToArray();
 
             var cm = new ChronalMapper(knownCoordinates);
+            cm.MapSpace();
 
             // Find largest safe space
             var area = new int[knownCoordinates.Length];
@@ -122,6 +154,19 @@ namespace AdventOfCode
             }
 
             return area.Max();
+        }
+
+        public static int Puzzle2(string input, int totalDistance)
+        {
+            var knownCoordinates = input.Split(new[] { Environment.NewLine }, StringSplitOptions.None)
+                .Select(line => line.Split(new[] { "," }, StringSplitOptions.None))
+                .Select(xy => xy.Select(i => Convert.ToInt32(i)).ToArray())
+                .Select(xy => (x: xy[0], y: xy[1])).ToArray();
+            var cm = new ChronalMapper(knownCoordinates);
+
+
+
+            return cm.FindLargestSafeSpace(totalDistance);
         }
     }
 }
