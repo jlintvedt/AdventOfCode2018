@@ -60,6 +60,7 @@ namespace AdventOfCode.Tests
             Assert.AreEqual("CABDFE", Day07.Puzzle1(inputDay07Example1));
         }
 
+        // Runtime...
         [TestMethod]
         public void Puzzle1Test()
         {
@@ -73,6 +74,7 @@ namespace AdventOfCode.Tests
             Assert.AreEqual(15, Day07.Puzzle2(inputDay07Example1, 0, 2));
         }
 
+        // Runtime...
         [TestMethod]
         public void Puzzle2Test()
         {
