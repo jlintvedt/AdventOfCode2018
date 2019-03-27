@@ -27,6 +27,27 @@ namespace AdventOfCode
                 }
                 return sum;
             }
+
+            public int GetNodeValueRecursively()
+            {
+                // Leaf nodes use sum of metadata
+                if (ChildNodes.Count==0)
+                {
+                    return Metadata.Sum();
+                }
+                // Non-leaf nodes use metadata to reference child-nodes sum
+                int sum = 0;
+                foreach (var meta in Metadata)
+                {
+                    if (0 < meta && meta <= ChildNodes.Count)
+                    {
+                        sum += ChildNodes[meta-1].GetNodeValueRecursively();
+                    }
+                }
+
+                // Note: Value could be stored for repeated retrieval
+                return sum;
+            }
         }
 
         public class NavigationSystem
@@ -42,6 +63,11 @@ namespace AdventOfCode
             public int SumMetadata()
             {
                 return RootNode.SumMetadataRecursively();
+            }
+
+            public int GetRootNodeValue()
+            {
+                return RootNode.GetNodeValueRecursively();
             }
 
             private Node ParseSubnode(int[] data, ref int index)
@@ -69,7 +95,10 @@ namespace AdventOfCode
 
         public static int Puzzle2(string input)
         {
-            return 0;
+            var data = Common.ParseIntArray(input, " ");
+            var ns = new NavigationSystem(data);
+
+            return ns.GetRootNodeValue();
         }
     }
 }

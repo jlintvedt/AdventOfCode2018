@@ -36,14 +36,14 @@ namespace AdventOfCode.Tests
         [TestMethod]
         public void Puzzle2ExampleTest()
         {
-            
+            Assert.AreEqual(66, Day08.Puzzle2(inputDay08Example1));
         }
 
         // Runtime...
         [TestMethod]
         public void Puzzle2Test()
         {
-            
+            Assert.AreEqual(16653, Day08.Puzzle2(inputDay08));
         }
     }
 }
