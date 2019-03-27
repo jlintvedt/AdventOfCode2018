@@ -8,6 +8,7 @@ namespace AdventOfCode
 {
     public static class Common
     {
+        // == == == == == Parsing == == == == ==
         public static int[] ParseIntArray(string input)
         {
             return input.Split(new[] { Environment.NewLine }, StringSplitOptions.None).Select(i => Convert.ToInt32(i)).ToArray();
@@ -24,6 +25,23 @@ namespace AdventOfCode
                 .Select(line => line.Split(new[] { "," }, StringSplitOptions.None))
                 .Select(xy => xy.Select(i => Convert.ToInt32(i)).ToArray())
                 .Select(xy => (x: xy[0], y: xy[1])).ToArray();
+        }
+
+        public static (char a, char b)[] ParseCharSubstringTupleArray(string input, int indexA, int indexB)
+        {
+            return input.Split(new[] { Environment.NewLine }, StringSplitOptions.None)
+                .Select(ab => (a: ab[indexA], b: ab[indexB])).ToArray();
+        }
+
+        // == == == == == Conversion == == == == ==
+        public static int LetterToIndex(char s)
+        {
+            return s - 65;
+        }
+
+        public static char IndexToLetter(int i)
+        {
+            return (char)(65 + i);
         }
     }
 }

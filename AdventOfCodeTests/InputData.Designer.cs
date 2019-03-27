@@ -468,6 +468,40 @@ namespace AdventOfCodeTests {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Step C must be finished before step A can begin.
+        ///Step C must be finished before step F can begin.
+        ///Step A must be finished before step B can begin.
+        ///Step A must be finished before step D can begin.
+        ///Step B must be finished before step E can begin.
+        ///Step D must be finished before step E can begin.
+        ///Step F must be finished before step E can begin..
+        /// </summary>
+        internal static string D07_E1 {
+            get {
+                return ResourceManager.GetString("D07_E1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Step I must be finished before step G can begin.
+        ///Step J must be finished before step A can begin.
+        ///Step L must be finished before step D can begin.
+        ///Step V must be finished before step S can begin.
+        ///Step U must be finished before step T can begin.
+        ///Step F must be finished before step Z can begin.
+        ///Step D must be finished before step A can begin.
+        ///Step E must be finished before step Z can begin.
+        ///Step C must be finished before step Q can begin.
+        ///Step H must be finished before step X can begin.
+        ///Step A must  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string D07_Puzzle {
+            get {
+                return ResourceManager.GetString("D07_Puzzle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to /-&gt;-\        
         ///|   |  /----\
         ///| /-+--+-\  |
