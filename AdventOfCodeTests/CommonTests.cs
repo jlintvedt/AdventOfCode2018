@@ -9,7 +9,10 @@ namespace AdventOfCode.Tests
         [TestMethod]
         public void ParseIntArrayTest()
         {
+            // Newline delimited string
             CollectionAssert.AreEqual(new int[] { 1, 2, 3 }, Common.ParseIntArray("1\r\n2\r\n3"));
+            // Space delimited string
+            CollectionAssert.AreEqual(new int[] { 1, 2, 3 }, Common.ParseIntArray("1 2 3", " "));
         }
 
         [TestMethod]

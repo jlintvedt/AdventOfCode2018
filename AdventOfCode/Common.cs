@@ -9,8 +9,12 @@ namespace AdventOfCode
     public static class Common
     {
         // == == == == == Parsing == == == == ==
-        public static int[] ParseIntArray(string input)
+        public static int[] ParseIntArray(string input, string delim=null)
         {
+            if (delim != null)
+            {
+                return input.Split(new[] { delim }, StringSplitOptions.None).Select(i => Convert.ToInt32(i)).ToArray();
+            }
             return input.Split(new[] { Environment.NewLine }, StringSplitOptions.None).Select(i => Convert.ToInt32(i)).ToArray();
         }
 
