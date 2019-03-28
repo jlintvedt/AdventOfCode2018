@@ -37,17 +37,11 @@ namespace AdventOfCode.Tests
         }
 
         // == == == == == Puzzle 2 == == == == ==
-        [TestMethod]
-        public void Puzzle2ExampleTest()
-        {
-            Assert.AreEqual(3, Day09.Puzzle2(""));
-        }
-
         // Runtime ...
         [TestMethod]
         public void Puzzle2Test()
         {
-            Assert.AreEqual(1023, Day09.Puzzle2(""));
+            Assert.AreEqual(3083412635, Day09.Puzzle1(468, 7101000));
         }
     }
 }

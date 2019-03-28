@@ -10,19 +10,21 @@ namespace AdventOfCode
     {
         public class MarbleGame
         {
-            public List<int> Marbles;
+            public LinkedList<int> Marbles;
+            private LinkedListNode<int> activeMarble;
             private int activeMarblePos = 0;
             private int numPlayers;
-            private int[] playerScores;
+            private long[] playerScores;
 
             public MarbleGame(int numPlayers)
             {
-                Marbles = new List<int>() { 0 };
+                Marbles = new LinkedList<int>();
+                activeMarble = Marbles.AddFirst(0);
                 this.numPlayers = numPlayers;
-                playerScores = new int[numPlayers];
+                playerScores = new long[numPlayers];
             }
 
-            public int PlayGame(int lastMarble)
+            public long PlayGame(int lastMarble)
             {
                 for (int currentMarble = 1; currentMarble <= lastMarble; currentMarble++)
                 {
@@ -37,29 +39,52 @@ namespace AdventOfCode
                 // Special rules and scoring applies if marble is multiple of 23
                 if (marbleValue%23 == 0)
                 {
-                    activeMarblePos = activeMarblePos<7 ? activeMarblePos+Marbles.Count-7 : (activeMarblePos - 7) % Marbles.Count;
-                    // Give the active player points for marble + bonus marble
-                    playerScores[marbleValue % numPlayers]+= marbleValue + Marbles[activeMarblePos];
-                    Marbles.RemoveAt(activeMarblePos);
-                    // Need to re-check active marble in case the last marble was removed
-                    activeMarblePos %= Marbles.Count;
-                    return;
+                    int backJumps = 7;
+                    // If at start of list => wrap around to end
+                    if (activeMarblePos < 7)
+                    {
+                        backJumps -= (activeMarblePos+1);
+                        activeMarblePos = Marbles.Count-1;
+                        activeMarble = Marbles.Last;
+                    }
+                    for (int i = 0; i < backJumps; i++)
+                    {
+                        activeMarble = activeMarble.Previous;
+                    }
+                    activeMarblePos -= backJumps;
+                    // Give the active player points for marble + bonus marble.
+                    playerScores[marbleValue % numPlayers]+= marbleValue + activeMarble.Value;
+                    var removeMarble = activeMarble;
+                    activeMarble = activeMarble.Next;
+                    Marbles.Remove(removeMarble);
+                    // Need to wrap around list if last marble was removed
+                    if (activeMarble == null)
+                    {
+                        activeMarble = Marbles.First;
+                        activeMarblePos = 0;
+                    }
+                } else
+                {
+                    // Normal move by adding marble to circle.
+                    if (activeMarblePos++ + 1 >= Marbles.Count)
+                    {
+                        activeMarble = Marbles.First;
+                        activeMarblePos = 0;
+                    }
+                    else
+                    {
+                        activeMarble = activeMarble.Next;
+                    }
+                    activeMarble = Marbles.AddAfter(activeMarble, marbleValue);
+                    activeMarblePos++;
                 }
-                // Normal move by adding marble to circle
-                activeMarblePos = (activeMarblePos + 2) % Marbles.Count;
-                Marbles.Insert(activeMarblePos, marbleValue);
             }
         }
 
-        public static int Puzzle1(int numPlayers, int lastMarble)
+        public static long Puzzle1(int numPlayers, int lastMarble)
         {
             var mg = new MarbleGame(numPlayers);
             return mg.PlayGame(lastMarble);
-        }
-
-        public static int Puzzle2(string s)
-        {
-            return 0;
         }
     }
 }
