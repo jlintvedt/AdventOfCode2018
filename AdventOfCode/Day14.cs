@@ -24,8 +24,7 @@ namespace AdventOfCode
         {
             private List<int> recipes;
             private Elf[] elfs;
-            
-            private int numRecipes { get { return recipes.Count; } }
+            private int numRecipes;
 
             public Cookbook(int[] startRecipes)
             {
@@ -38,6 +37,7 @@ namespace AdventOfCode
                     recipes.Add(startRecipes[i]);
                     elfs[i] = new Elf(recipes[i], i);
                 }
+                numRecipes = recipes.Count;
             }
 
             public string FindIdealRecipes(int numTrainingRecipes)
@@ -86,8 +86,10 @@ namespace AdventOfCode
                     recipes.Add(newRecipe / 10);
                     // Should be safe as long as we only add two values <10, with a potential max of 18
                     recipes.Add(newRecipe - 10);
+                    numRecipes += 2;
                 } else{
                     recipes.Add(newRecipe);
+                    numRecipes++;
                 }
                 // Move elfs
                 foreach (var elf in elfs){
